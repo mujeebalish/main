@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Create Your Account</h2>
+
+        <form id="signup-form">
+            <div class="form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" placeholder="Enter your first name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" placeholder="Enter your last name" required>
+            </div> 
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+
+           <div class="form-group">
+                <label for="id-card">ID Card Number</label>
+                <input type="text" id="id-card" placeholder="Enter your ID card number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="user-type">User Type</label>
+                <select id="user-type" required>
+                    <option value="" disabled selected>Select user type</option>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                </select>
+            </div> 
+
+            <button type="submit" class="btn">Register</button>
+        </form>
+        <a href="file:///E:/Hackathon/Admin/Login%20page/login.html">Already have an account</a>
+    </div>
+    <script src="../firebase.js" type="module"></script>
+    <script src="Signup.js" type="module"></script>
+</body>
+</html>
+
+    
+
+
+    
+
+
+
+   
+    
+
+    
+
