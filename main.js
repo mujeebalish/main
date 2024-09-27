@@ -25,42 +25,34 @@ document.getElementById('adminBtn').addEventListener('click', function() {
        let email = document.getElementById('admin-email');
        let password = document.getElementById('admin-password');
        event.preventDefault()
-      //  adminLogin.innerText= 'Loading.....'
+        // adminLogin.innerText= 'Loading.....'
        signInWithEmailAndPassword(auth, email.value, password.value)
        .then((userCredential) => {
          // Signed in 
          const user = userCredential.user;
         //  alert("Signin Successful")
         Toastify({
-
-          text: "Successful login",
-          
+        text: "Successful login",
           duration: 3000
-          
-          }).showToast();
+           }).showToast();
          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           Toastify({
-
             text: errorMessage,
-            
             duration: 3000
-            
             }).showToast();
         });
-        
-        
         // onAut state change
         onAuthStateChanged(auth, (user) => {
           if (user) {
             window.location.href = './dashbord/dashbord.html'
           } 
         });
-      }); 
-
+        }); 
+        
       // forgot password
       let forgotPassword = document.getElementById("forgot-password");
        forgotPassword.addEventListener("click", () => {
