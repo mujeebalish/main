@@ -31,17 +31,28 @@ document.getElementById('adminBtn').addEventListener('click', function() {
          // Signed in 
          const user = userCredential.user;
         //  alert("Signin Successful")
-         console.log(user);
+        Toastify({
+
+          text: "Successful login",
+          
+          duration: 3000
+          
+          }).showToast();
          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          alert(errorMessage);
+          Toastify({
+
+            text: errorMessage,
+            
+            duration: 3000
+            
+            }).showToast();
         });
         //  alert(errorMessage);
-        email.value = "";
-        password.value = ""
+        
         
         onAuthStateChanged(auth, (user) => {
           if (user) {
