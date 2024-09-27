@@ -1,4 +1,4 @@
-import { auth, signInWithEmailAndPassword } from "./dashbord/firebase.js";
+import { auth, signInWithEmailAndPassword,onAuthStateChanged,sendPasswordResetEmail } from "./dashbord/firebase.js";
 // AdminBtn
 document.getElementById('adminBtn').addEventListener('click', function() {
     document.getElementById('adminLogin').classList.add('active');
@@ -25,28 +25,58 @@ document.getElementById('adminBtn').addEventListener('click', function() {
        let email = document.getElementById('admin-email');
        let password = document.getElementById('admin-password');
        event.preventDefault()
-        adminLogin.innerText= "Loading....."
+      //  adminLogin.innerText= 'Loading.....'
        signInWithEmailAndPassword(auth, email.value, password.value)
        .then((userCredential) => {
          // Signed in 
          const user = userCredential.user;
-         alert("Signin Successful")
-
+        //  alert("Signin Successful")
+         console.log(user);
          // ...
-         })
-         .catch((error) => {
-           const errorCode = error.code;
-           const errorMessage = error.message;
-           alert(errorMessage);
-           
-           });
-      //  alert(errorMessage);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+        //  alert(errorMessage);
+        email.value = "";
+        password.value = ""
+        
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            window.location.href = './dashbord/dashbord.html'
+          } 
+        });
+      });
+      let forgotPassword = document.getElementById("forgot-password");
+       forgotPassword.addEventListener("click", () => {
+        let email = document.getElementById('admin-email');
+        
+        
+sendPasswordResetEmail(auth, email.value)
+  .then(() => {
+    Toastify({
+   text: "A password reset link has been sent to your email",
+      duration: 3000
+      }).showToast();
+    // Password reset email sent!
+    // ..
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+       })
+      
+      
+      
+        
+     
+      
        
-        
-         email.value = "";
-         password.value = ""
-        
-       });
+         
        // Student login button
        /*document.getElementById('studentloginBtn').addEventListener('click', () => {
         let email = document.getElementById('student-email');
