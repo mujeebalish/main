@@ -56,13 +56,26 @@ document.getElementById('adminBtn').addEventListener('click', function() {
         
 sendPasswordResetEmail(auth, email.value)
   .then(() => {
-    
+    Toastify({
+
+      text: "A password reset link has been send to your email",
+      
+      duration: 3000
+      
+      }).showToast();
     // Password reset email sent!
     // ..
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
+    Toastify({
+
+      text: errorMessage,
+      
+      duration: 3000
+      
+      }).showToast();
     // ..
   });
        })
