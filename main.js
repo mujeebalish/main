@@ -51,28 +51,25 @@ document.getElementById('adminBtn').addEventListener('click', function() {
             
             }).showToast();
         });
-        //  alert(errorMessage);
         
         
+        // onAut state change
         onAuthStateChanged(auth, (user) => {
           if (user) {
             window.location.href = './dashbord/dashbord.html'
           } 
         });
-      });
+      }); 
+
+      // forgot password
       let forgotPassword = document.getElementById("forgot-password");
        forgotPassword.addEventListener("click", () => {
         let email = document.getElementById('admin-email');
-        
-        
-sendPasswordResetEmail(auth, email.value)
+        sendPasswordResetEmail(auth, email.value)
   .then(() => {
     Toastify({
-
-      text: "A password reset link has been send to your email",
-      
+    text: "A password reset link has been send to your email",
       duration: 3000
-      
       }).showToast();
     // Password reset email sent!
     // ..
@@ -87,6 +84,8 @@ sendPasswordResetEmail(auth, email.value)
       duration: 3000
       
       }).showToast();
+      email.value = "";
+
     // ..
   });
        })
