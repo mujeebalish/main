@@ -51,7 +51,8 @@ document.getElementById('adminBtn').addEventListener('click', function() {
             window.location.href = './dashbord/dashbord.html'
           } 
         });
-        }); 
+      }); 
+        
         
       // forgot password
       let forgotPassword = document.getElementById("forgot-password");
