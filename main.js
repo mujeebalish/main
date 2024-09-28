@@ -30,20 +30,14 @@ document.getElementById('adminBtn').addEventListener('click', function() {
        .then((userCredential) => {
          // Signed in 
          const user = userCredential.user;
-        //  alert("Signin Successful")
-        Toastify({
-        text: "Successful login",
-          duration: 3000
-           }).showToast();
+         alert("Signin Successful")
+        
          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          Toastify({
-            text: errorMessage,
-            duration: 3000
-            }).showToast();
+          
         });
         // onAut state change
         onAuthStateChanged(auth, (user) => {
