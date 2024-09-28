@@ -47,7 +47,7 @@ document.getElementById('adminBtn').addEventListener('click', function() {
             const uid = user.uid;
             // ...
           } else {
-            // User is signed out
+            alert("Pleas fulfil all fields")
             // ...
           }
         });
