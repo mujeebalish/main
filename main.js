@@ -1,5 +1,6 @@
 import { auth, signInWithEmailAndPassword,onAuthStateChanged,sendPasswordResetEmail } from "./dashbord/firebase.js";
 // AdminBtn
+
 document.getElementById('adminBtn').addEventListener('click', function() {
     document.getElementById('adminLogin').classList.add('active');
     document.getElementById('studentLogin').classList.remove('active');
@@ -25,33 +26,34 @@ document.getElementById('adminBtn').addEventListener('click', function() {
        let email = document.getElementById('admin-email');
        let password = document.getElementById('admin-password');
        event.preventDefault()
-        // adminLogin.innerText= 'Loading.....'
        signInWithEmailAndPassword(auth, email.value, password.value)
        .then((userCredential) => {
          // Signed in 
          const user = userCredential.user;
-         alert("Signin Successful")
-        
+         Toastify({
+          text: "Login successful",
+            duration: 3000
+            }).showToast();
          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          
-        });
-        // onAut state change
-          onAuthStateChanged(auth, (user) => {
-          if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/auth.user
-          window.location.href = "./dashbord/dashbord.html"
-            // ...
-          } else {
-            alert("Pleas fulfil all fields")
-            // ...
-          }
-        });
+       })
+       .catch((error) => {
+         const errorCode = error.code;
+         const errorMessage = error.message;
+         Toastify({
+          text: errorMessage,
+            duration: 3000
+            }).showToast();
+       });
+       email.value = "";
+      password.value = "";
+       onAuthStateChanged(auth, (user) => {
+        if (user) {
+        location.replace ("./dashbord/dashbord.html");
+        } 
+      });
       }); 
+      
+      
         
         
       // forgot password
@@ -77,11 +79,12 @@ document.getElementById('adminBtn').addEventListener('click', function() {
       duration: 3000
       
       }).showToast();
-      email.value = "";
+      
 
     // ..
   });
        })
+       
       
       
       
