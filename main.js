@@ -21,7 +21,7 @@ document.getElementById('adminBtn').addEventListener('click', function() {
       
        // Admin login button
 
-       let adminLogin = document.getElementById('adminloginBtn').addEventListener('click', () => {
+       document.getElementById('adminloginBtn').addEventListener('click', () => {
        let email = document.getElementById('admin-email');
        let password = document.getElementById('admin-password');
        event.preventDefault()
