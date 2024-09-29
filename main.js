@@ -96,11 +96,19 @@ document.getElementById('adminBtn').addEventListener('click', function() {
           const credential = GoogleAuthProvider.credentialFromResult(result);
           const token = credential.accessToken;
           const user = result.user;
-          alert(user)
+          Toastify({
+        text: user,
+      duration: 3000
+      }).showToast();
+          // alert(user)
         }).catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          alert(errorMessage)
+          Toastify({
+        text: errorMessage,
+      duration: 3000
+      }).showToast();
+          // alert(errorMessage)
                    const credential = GoogleAuthProvider.credentialFromError(error);
         
         });
